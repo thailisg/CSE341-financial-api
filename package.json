@@ -1,0 +1,28 @@
+{
+  "name": "cse341-financial-api",
+  "version": "1.0.0",
+  "description": "Our API about manage our finances",
+  "homepage": "https://github.com/thailisg/CSE341-financial-api#readme",
+  "bugs": {
+    "url": "https://github.com/thailisg/CSE341-financial-api/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thailisg/CSE341-financial-api.git"
+  },
+  "license": "ISC",
+  "author": "Team 15",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express-session": "^1.19.0",
+    "express-validator": "^7.3.2",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "swagger-autogen": "^2.23.7"
+  }
+}
