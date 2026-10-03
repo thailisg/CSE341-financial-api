@@ -5,4 +5,6 @@ router.use('/', require('./swagger'));
 router.use('/periods', require('./periods')); 
 //router.use('/users', require('./users'));
 
+router.use('/categories', require('./categories'));
+
 module.exports = router;
