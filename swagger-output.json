@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "My API",
-    "description": "Contact API",
+    "title": "Financial API",
+    "description": "API documentation for the Financial API project",
     "version": "1.0.0"
   },
   "host": "localhost:3000",
