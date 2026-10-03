@@ -5,7 +5,7 @@
     "description": "API documentation for the Financial API project",
     "version": "1.0.0"
   },
-  "host": "://onrender.com",
+  "host": "cse341-financial-api.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
