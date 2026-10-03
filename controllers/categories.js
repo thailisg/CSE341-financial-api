@@ -1,8 +1,8 @@
 const mongodb = require('../data/database'); 
 const { ObjectId } = require('mongodb');
 
-// 1. GET all 
 const getAllCategories = async (req, res) => {
+  // #swagger.tags = ['Categories']
   try {
     const result = await mongodb.getDb().db().collection('categories').find();
     const lists = await result.toArray();
@@ -13,8 +13,8 @@ const getAllCategories = async (req, res) => {
   }
 };
 
-// 2. GET a single category by ID
 const getSingleCategory = async (req, res) => {
+  // #swagger.tags = ['Categories']
   try {
     if (!ObjectId.isValid(req.params.id)) {
       return res.status(400).json({ message: 'Must use a valid category ID.' });
@@ -28,23 +28,24 @@ const getSingleCategory = async (req, res) => {
     }
     
     res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(lists[0]); 
+    res.status(200).json(lists); 
   } catch (error) {
     res.status(500).json({ message: 'Error retrieving category', error: error.message });
   }
 };
 
-// 3. POST Create a new category
 const createCategory = async (req, res) => {
+  // #swagger.tags = ['Categories']
+  /* #swagger.parameters['obj'] = {
+        in: 'body',
+        description: 'Category data',
+        required: true,
+        schema: { $name: 'Entertainment', description: 'Expenses related to movies, games, etc.' }
+  } */
   try {
-    if (!req.body.name) {
-      return res.status(400).json({ message: 'Category name is required.' });
-    }
-
     const newCategory = {
       name: req.body.name,
-      description: req.body.description || '',
-      color: req.body.color || '#ffffff'
+      description: req.body.description || ''
     };
     
     const response = await mongodb.getDb().db().collection('categories').insertOne(newCategory);
@@ -58,22 +59,23 @@ const createCategory = async (req, res) => {
   }
 };
 
-// 4. PUT Update an existing category by id  
 const updateCategory = async (req, res) => {
+  // #swagger.tags = ['Categories']
+  /* #swagger.parameters['obj'] = {
+        in: 'body',
+        description: 'Updated category data',
+        required: true,
+        schema: { $name: 'Entertainment', description: 'Updated description' }
+  } */
   try {
     if (!ObjectId.isValid(req.params.id)) {
       return res.status(400).json({ message: 'Must use a valid category ID to update.' });
     }
     
-    if (!req.body.name) {
-      return res.status(400).json({ message: 'Category name is required to update.' });
-    }
-
     const categoryId = new ObjectId(req.params.id);
     const updatedCategory = {
       name: req.body.name,
-      description: req.body.description || '',
-      color: req.body.color || '#ffffff'
+      description: req.body.description || ''
     };
     
     const response = await mongodb.getDb().db().collection('categories').replaceOne({ _id: categoryId }, updatedCategory);
@@ -88,8 +90,8 @@ const updateCategory = async (req, res) => {
   }
 };
 
-// 5. DELETE Remove a category document by id
 const deleteCategory = async (req, res) => {
+  // #swagger.tags = ['Categories']
   try {
     if (!ObjectId.isValid(req.params.id)) {
       return res.status(400).json({ message: 'Must use a valid category ID to delete.' });
@@ -106,7 +108,6 @@ const deleteCategory = async (req, res) => {
   }
 };
 
-
 module.exports = { 
   getAllCategories, 
   getSingleCategory, 
@@ -114,3 +115,6 @@ module.exports = {
   updateCategory, 
   deleteCategory 
 };
+
+
+
