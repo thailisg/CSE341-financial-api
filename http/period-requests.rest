@@ -1,0 +1,41 @@
+### Get all periods
+GET http://localhost:3000/periods
+
+### Get a single period by id
+GET http://localhost:3000/periods/6ac07a7e55511c102bacad60
+
+
+### Create a new period
+POST http://localhost:3000/periods
+Content-Type: application/json
+
+{
+  "month": 10,
+  "year": 2026,
+  "label": "October 2026",
+  "startDate": "2026-10-01",
+  "endDate": "2026-10-31",
+  "isClosed": false,
+  "notes": "This is a test period for October 2026.",
+  "totalIncome": 0,
+  "totalExpenses": 0
+}
+
+### Update an existing period
+PUT http://localhost:3000/periods/6ac07c03b3bfe0522060d74e
+Content-Type: application/json
+
+{
+  "month": 10,
+  "year": 2026,
+  "label": "October 2026",
+  "startDate": "2026-10-01",
+  "endDate": "2026-10-31",
+  "isClosed": true,
+  "notes": "This is a test period for October 2026.",
+  "totalIncome": 5000,
+  "totalExpenses": 0
+}
+
+### Delete a period
+DELETE http://localhost:3000/periods/6ac07c03b3bfe0522060d74e
