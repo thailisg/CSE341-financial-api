@@ -3,7 +3,7 @@
  const ObjectId = require('mongodb').ObjectId;
 
  const getAllPeriods = async (req, res) => {
-  //swagger.tags=['Periods'];
+  // #swagger.tags=['Periods'];
   try {
     const result = await mongodb.getDatabase().db().collection('periods').find();
     result.toArray().then((periods) => {
@@ -16,7 +16,7 @@
 };
 
 const getPeriodById = async (req, res) => {
-  //swagger.tags=['Periods'];
+  // #swagger.tags=['Periods'];
   const periodId = req.params.id;    
   try {
     const result = await mongodb.getDatabase().db().collection('periods').find({ _id: new ObjectId(periodId)});
@@ -30,7 +30,7 @@ const getPeriodById = async (req, res) => {
 };
 
 const createPeriod = async (req, res) => {
-  //swagger.tags=['Periods']
+  // #swagger.tags=['Periods']
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
@@ -61,7 +61,7 @@ const createPeriod = async (req, res) => {
 };
 
 const updatePeriod = async (req, res) => {
-    //swagger.tags=['Periods']
+    // #swagger.tags=['Periods']
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
@@ -88,7 +88,7 @@ const updatePeriod = async (req, res) => {
 };
 
 const deletePeriod = async (req, res) => {
-    //swagger.tags=['Periods']
+    // #swagger.tags=['Periods']
     const periodId = req.params.id;
     const result = await mongodb.getDatabase().db().collection('periods').deleteOne({ _id: new ObjectId(periodId)});
     if (result.deletedCount > 0) {

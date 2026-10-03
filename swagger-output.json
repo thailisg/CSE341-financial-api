@@ -21,8 +21,11 @@
         }
       }
     },
-    "/period/": {
+    "/periods/": {
       "get": {
+        "tags": [
+          "Periods"
+        ],
         "description": "",
         "produces": [
           "application/json"
@@ -37,6 +40,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Periods"
+        ],
         "description": "",
         "parameters": [
           {
@@ -83,17 +89,17 @@
           "400": {
             "description": "Bad Request"
           },
-          "401": {
-            "description": "Unauthorized"
-          },
           "500": {
             "description": "Internal Server Error"
           }
         }
       }
     },
-    "/period/{id}": {
+    "/periods/{id}": {
       "get": {
+        "tags": [
+          "Periods"
+        ],
         "description": "",
         "produces": [
           "application/json"
@@ -116,6 +122,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Periods"
+        ],
         "description": "",
         "parameters": [
           {
@@ -168,15 +177,15 @@
           "400": {
             "description": "Bad Request"
           },
-          "401": {
-            "description": "Unauthorized"
-          },
           "500": {
             "description": "Internal Server Error"
           }
         }
       },
       "delete": {
+        "tags": [
+          "Periods"
+        ],
         "description": "",
         "parameters": [
           {
@@ -189,9 +198,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "401": {
-            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal Server Error"
