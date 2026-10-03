@@ -26,7 +26,6 @@
         "tags": [
           "Categories"
         ],
-        "summary": "Get all categories",
         "description": "",
         "produces": [
           "application/json"
@@ -44,7 +43,6 @@
         "tags": [
           "Categories"
         ],
-        "summary": "Create a new category",
         "description": "",
         "parameters": [
           {
@@ -88,7 +86,6 @@
         "tags": [
           "Categories"
         ],
-        "summary": "Get a single category by ID",
         "description": "",
         "produces": [
           "application/json"
@@ -120,7 +117,6 @@
         "tags": [
           "Categories"
         ],
-        "summary": "Update an existing category",
         "description": "",
         "parameters": [
           {
@@ -174,7 +170,6 @@
         "tags": [
           "Categories"
         ],
-        "summary": "Delete a category",
         "description": "",
         "parameters": [
           {
