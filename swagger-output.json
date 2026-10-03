@@ -1,14 +1,14 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "My API",
-    "description": "Contact API",
+    "title": "Financial API",
+    "description": "API documentation for the Financial API project",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "://onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/api-docs": {
@@ -26,6 +26,7 @@
         "tags": [
           "Categories"
         ],
+        "summary": "Get all categories",
         "description": "",
         "produces": [
           "application/json"
@@ -43,6 +44,7 @@
         "tags": [
           "Categories"
         ],
+        "summary": "Create a new category",
         "description": "",
         "parameters": [
           {
@@ -86,6 +88,7 @@
         "tags": [
           "Categories"
         ],
+        "summary": "Get a single category by ID",
         "description": "",
         "produces": [
           "application/json"
@@ -117,6 +120,7 @@
         "tags": [
           "Categories"
         ],
+        "summary": "Update an existing category",
         "description": "",
         "parameters": [
           {
@@ -170,6 +174,7 @@
         "tags": [
           "Categories"
         ],
+        "summary": "Delete a category",
         "description": "",
         "parameters": [
           {
@@ -194,9 +199,194 @@
           }
         }
       }
+    },
+    "/periods/": {
+      "get": {
+        "tags": [
+          "Periods"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Periods"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "month": {
+                  "example": "any"
+                },
+                "year": {
+                  "example": "any"
+                },
+                "label": {
+                  "example": "any"
+                },
+                "startDate": {
+                  "example": "any"
+                },
+                "endDate": {
+                  "example": "any"
+                },
+                "isClosed": {
+                  "example": "any"
+                },
+                "notes": {
+                  "example": "any"
+                },
+                "totalIncome": {
+                  "example": "any"
+                },
+                "totalExpenses": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/periods/{id}": {
+      "get": {
+        "tags": [
+          "Periods"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Periods"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "month": {
+                  "example": "any"
+                },
+                "year": {
+                  "example": "any"
+                },
+                "label": {
+                  "example": "any"
+                },
+                "startDate": {
+                  "example": "any"
+                },
+                "endDate": {
+                  "example": "any"
+                },
+                "isClosed": {
+                  "example": "any"
+                },
+                "notes": {
+                  "example": "any"
+                },
+                "totalIncome": {
+                  "example": "any"
+                },
+                "totalExpenses": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Periods"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
     }
   },
   "schemas": [
     "http"
   ]
 }
+
