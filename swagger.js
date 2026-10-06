@@ -1,3 +1,4 @@
+require('dotenv').config();
 const swaggerAutogen = require('swagger-autogen')();
 
 //If runs in Render then (process.env.RENDER is true)
@@ -8,8 +9,8 @@ const doc = {
     title: 'Financial API',
     description: 'API documentation for the Financial API project'
   },
-  host: isProduction ? 'cse341-financial-api.onrender.com' : 'localhost:3000',
-  schemas: isProduction ? ['https'] : ['http'],
+  host: process.env.RENDER_EXTERNAL_HOSTNAME || 'cse341-financial-api.onrender.com',
+  schemes: ['https', 'http']
 };
 
 const outputFile = './swagger-output.json';
