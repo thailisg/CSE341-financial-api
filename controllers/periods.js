@@ -62,40 +62,59 @@ const createPeriod = async (req, res) => {
 
 const updatePeriod = async (req, res) => {
     // #swagger.tags=['Periods']
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
-    }
+    try {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
 
-    const periodId = req.params.id;
-    const updatedPeriod = {
-        month: req.body.month,
-        year: req.body.year,
-        label: req.body.label,
-        startDate: req.body.startDate,
-        endDate: req.body.endDate,
-        isClosed: req.body.isClosed,
-        notes: req.body.notes,
-        totalIncome: req.body.totalIncome,
-        totalExpenses: req.body.totalExpenses
+        if (!ObjectId.isValid(req.params.id)) {
+            return res.status(400).json({ error: 'Must use a valid period ID to update.' });
+        }
+
+        const periodId = req.params.id;
+        const updatedPeriod = {
+            month: req.body.month,
+            year: req.body.year,
+            label: req.body.label,
+            startDate: req.body.startDate,
+            endDate: req.body.endDate,
+            isClosed: req.body.isClosed,
+            notes: req.body.notes,
+            totalIncome: req.body.totalIncome,
+            totalExpenses: req.body.totalExpenses
+        };
+        const result = await mongodb.getDb().db().collection('periods').replaceOne({ _id: new ObjectId(periodId)}, updatedPeriod);
+            
+            if (result.matchedCount > 0) {
+                res.status(204).json('Period updated successfully');
+            } else {
+                res.status(404).json({ error: 'Period not found to update' });
+            }
+        } catch (err) {
+            res.status(500).json({ error: 'Failed to update period due to server error', message: err.message });
+        }
     };
-    const result = await mongodb.getDatabase().db().collection('periods').replaceOne({ _id: new ObjectId(periodId)}, updatedPeriod);
-    if (result.modifiedCount > 0) {
-    res.status(204).json('Period updated successfully');
-    } else {
-        res.status(500).json({ error: 'Failed to update period' });
-    }
-};
 
 const deletePeriod = async (req, res) => {
     // #swagger.tags=['Periods']
-    const periodId = req.params.id;
-    const result = await mongodb.getDatabase().db().collection('periods').deleteOne({ _id: new ObjectId(periodId)});
-    if (result.deletedCount > 0) {
-        res.status(200).json('Period deleted successfully');
-    } else {
-        res.status(500).json({ error: 'Failed to delete period' });
-    } 
+    try {
+        if (!ObjectId.isValid(req.params.id)) {
+            return res.status(400).json({ error: 'Must use a valid period ID to delete.' });
+        }
+
+        const periodId = req.params.id;
+        
+        const result = await mongodb.getDb().db().collection('periods').deleteOne({ _id: new ObjectId(periodId)});
+        
+        if (result.deletedCount > 0) {
+            res.status(200).json('Period deleted successfully');
+        } else {
+            res.status(404).json({ error: 'Period not found to delete' });
+        }
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to delete period due to server error', message: err.message });
+    }
 };
 
 module.exports = {
