@@ -2,7 +2,8 @@ const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
 //function to get all transactions
-const getAll = async (req, res, next) => {
+const getAllTransactions = async (req, res, next) => {
+    // #swagger.tags = ['Transactions']
     try {
         const result = await mongodb
             .getDatabase()
@@ -20,7 +21,8 @@ const getAll = async (req, res, next) => {
 }
 
 //function to get a single transaction
-const getSingle = async (req, res, next) => {
+const getSingleTransactions = async (req, res, next) => {
+    // #swagger.tags = ['Transactions']
     try {
         console.log("ID:", req.params.id);
 
@@ -49,6 +51,7 @@ const getSingle = async (req, res, next) => {
 
 //function to create a new transaction
 const createTransaction = async (req, res, next) => {
+    // #swagger.tags = ['Transactions']
     try {
         const transaction = {
             periodId: new ObjectId(req.body.periodId),
@@ -77,6 +80,7 @@ const createTransaction = async (req, res, next) => {
 
 //Function to Update a single transaction
 const updateSingleTransaction = async (req, res, next) => {
+    // #swagger.tags = ['Transactions']
     try {
         console.log("ID:", req.params.id);
 
@@ -110,6 +114,7 @@ const updateSingleTransaction = async (req, res, next) => {
 
 //Function to Delete a single transaction
 const deleteTransaction = async (req, res, next) => {
+    // #swagger.tags = ['Transactions']
     try {
         console.log("ID:", req.params.id);
 
@@ -132,8 +137,8 @@ const deleteTransaction = async (req, res, next) => {
 }
 
 module.exports = {
-    getAll,
-    getSingle,
+    getAllTransactions,
+    getSingleTransactions,
     createTransaction,
     updateSingleTransaction,
     deleteTransaction

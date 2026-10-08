@@ -391,6 +391,9 @@
     },
     "/transactions/": {
       "get": {
+        "tags": [
+          "Transactions"
+        ],
         "description": "",
         "produces": [
           "application/json"
@@ -402,6 +405,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Transactions"
+        ],
         "description": "",
         "parameters": [
           {
@@ -447,6 +453,9 @@
     },
     "/transactions/{id}": {
       "get": {
+        "tags": [
+          "Transactions"
+        ],
         "description": "",
         "produces": [
           "application/json"
@@ -472,6 +481,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Transactions"
+        ],
         "description": "",
         "parameters": [
           {
@@ -524,6 +536,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Transactions"
+        ],
         "description": "",
         "parameters": [
           {

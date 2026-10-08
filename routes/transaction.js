@@ -6,12 +6,12 @@ const validation = require('../middleware/transaction');
 //const { isAuthenticated } = require("../middleware/authenticate")  this is for future Aoath
 
 //route for get all transactions
-router.get('/', transactionController.getAll);
+router.get('/', transactionController.getAllTransactions);
 
 //route for get single transaction
 router.get('/:id',
     validation.validateId,
-    transactionController.getSingle
+    transactionController.getSingleTransactions
 );
 
 //route to Create an transaction
