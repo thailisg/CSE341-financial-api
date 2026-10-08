@@ -2,11 +2,13 @@ const express = require('express');
 const { body, validationResult } = require('express-validator');
 const router = express.Router();
 const periodController = require('../controllers/periods');
+const { isAuthenticated } = require("../middleware/authenticate")
 
 router.get('/', periodController.getAllPeriods);
 router.get('/:id', periodController.getPeriodById);
 router.post(
     '/', 
+    isAuthenticated,
     body('month').isInt({ min: 1, max: 12 }).withMessage('Month must be an integer between 1 and 12'),
     body('year').isInt({ min: 1900 }).withMessage('Year must be an integer greater than or equal to 1900'),
     body('label').isString().withMessage('Label must be a string'),
@@ -17,7 +19,8 @@ router.post(
     body('totalIncome').isFloat({ min: 0 }).withMessage('Total income must be a non-negative number'),
     body('totalExpenses').isFloat({ min: 0 }).withMessage('Total expenses must be a non-negative number'),
     periodController.createPeriod);
-router.put('/:id', 
+router.put('/:id',
+    isAuthenticated,
     body('month').isInt({ min: 1, max: 12 }).withMessage('Month must be an integer between 1 and 12'),
     body('year').isInt({ min: 1900 }).withMessage('Year must be an integer greater than or equal to 1900'),
     body('label').isString().withMessage('Label must be a string'),
@@ -28,6 +31,6 @@ router.put('/:id',
     body('totalIncome').isFloat({ min: 0 }).withMessage('Total income must be a non-negative number'),
     body('totalExpenses').isFloat({ min: 0 }).withMessage('Total expenses must be a non-negative number'),
     periodController.updatePeriod);
-router.delete('/:id', periodController.deletePeriod);
+router.delete('/:id', isAuthenticated, periodController.deletePeriod);
 
 module.exports = router;
