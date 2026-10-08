@@ -84,7 +84,7 @@ const updatePeriod = async (req, res) => {
             totalIncome: req.body.totalIncome,
             totalExpenses: req.body.totalExpenses
         };
-        const result = await mongodb.getDb().db().collection('periods').replaceOne({ _id: new ObjectId(periodId)}, updatedPeriod);
+        const result = await mongodb.getDatabase().db().collection('periods').replaceOne({ _id: new ObjectId(periodId)}, updatedPeriod);
             
             if (result.matchedCount > 0) {
                 res.status(204).json('Period updated successfully');
@@ -105,7 +105,7 @@ const deletePeriod = async (req, res) => {
 
         const periodId = req.params.id;
         
-        const result = await mongodb.getDb().db().collection('periods').deleteOne({ _id: new ObjectId(periodId)});
+        const result = await mongodb.getDatabase().db().collection('periods').deleteOne({ _id: new ObjectId(periodId)});
         
         if (result.deletedCount > 0) {
             res.status(200).json('Period deleted successfully');
