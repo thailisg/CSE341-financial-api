@@ -3,7 +3,7 @@ const router = express.Router();
 
 const transactionController = require('../controllers/transactions')
 const validation = require('../middleware/transaction');
-//const { isAuthenticated } = require("../middleware/authenticate")  this is for future Aoath
+const { isAuthenticated } = require("../middleware/authenticate")
 
 //route for get all transactions
 router.get('/', transactionController.getAllTransactions);
@@ -16,7 +16,7 @@ router.get('/:id',
 
 //route to Create an transaction
 router.post('/',
-    //isAuthenticated, future authentication
+    isAuthenticated,
     validation.transactionValidationRules(),
     validation.validate,
     transactionController.createTransaction
@@ -24,7 +24,7 @@ router.post('/',
 
 //route for update an transaction
 router.put('/:id',
-    //isAuthenticated, future authentication
+    isAuthenticated,
     validation.validateId,
     validation.transactionValidationRules(),
     validation.validate,
@@ -33,7 +33,7 @@ router.put('/:id',
 
 //route for delete an arttransaction 
 router.delete('/:id',
-    //isAuthenticated,
+    isAuthenticated,
     validation.validateId,
     transactionController.deleteTransaction
 );
