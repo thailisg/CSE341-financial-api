@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.use('/', require('./swagger'));
 router.use('/periods', require('./periods'));
-//router.use('/users', require('./users'));
+router.use('/budgets', require('./budgets'));
 router.use('/categories', require('./categories'));
 router.use('/transactions', require('./transaction'));
 
