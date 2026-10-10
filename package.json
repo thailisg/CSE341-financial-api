@@ -16,7 +16,7 @@
   "main": "index.js",
   "scripts": {
     "swagger": "node ./swagger.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "dependencies": {
     "body-parser": "^2.3.0",
@@ -31,6 +31,7 @@
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
+    "jest": "^30.5.2",
     "swagger-autogen": "^2.23.7"
   }
 }
