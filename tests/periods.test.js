@@ -84,4 +84,43 @@ describe('Tests GET - Periods Controller', () => {
     expect(res.status).toHaveBeenCalledWith(500);
     expect(res.json).toHaveBeenCalledWith({ error: 'Failed to fetch periods' });
   });
+
+  // Test 5: GET All Periods when the collection is empty
+  test('5. getAllPeriods should return status 200 and an empty array when no periods exist', async () => {
+    mongodb.getDatabase.mockReturnValue({
+      db: () => ({
+        collection: () => ({
+          find: () => ({
+            toArray: jest.fn().mockResolvedValue([])
+          })
+        })
+      })
+    });
+
+    await periodsController.getAllPeriods(req, res);
+
+    expect(res.status).toHaveBeenCalledWith(200);
+    expect(res.json).toHaveBeenCalledWith([]);
+  });nm 
+
+  // Test 6: GET Single Period with a valid ID that matches no document
+  test('6. getPeriodById should return status 200 and undefined when no period matches the ID', async () => {
+    req.params.id = '60d5ecb4f1b2c81184a2b999';
+
+    mongodb.getDatabase.mockReturnValue({
+      db: () => ({
+        collection: () => ({
+          find: () => ({
+            toArray: jest.fn().mockResolvedValue([])
+          })
+        })
+      })
+    });
+
+    await periodsController.getPeriodById(req, res);
+
+    expect(res.status).toHaveBeenCalledWith(200);
+    expect(res.json).toHaveBeenCalledWith(undefined);
+  });
 });
+
