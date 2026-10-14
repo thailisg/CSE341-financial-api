@@ -101,7 +101,7 @@ describe('Tests GET - Periods Controller', () => {
 
     expect(res.status).toHaveBeenCalledWith(200);
     expect(res.json).toHaveBeenCalledWith([]);
-  });nm 
+  });
 
   // Test 6: GET Single Period with a valid ID that matches no document
   test('6. getPeriodById should return status 200 and undefined when no period matches the ID', async () => {

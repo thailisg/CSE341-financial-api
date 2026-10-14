@@ -10,13 +10,13 @@ POST http://localhost:3000/periods
 Content-Type: application/json
 
 {
-  "month": 10,
+  "month": 11,
   "year": 2026,
-  "label": "October 2026",
-  "startDate": "2026-10-01",
-  "endDate": "2026-10-31",
+  "label": "November 2026",
+  "startDate": "2026-11-01",
+  "endDate": "2026-11-30",
   "isClosed": false,
-  "notes": "This is a test period for October 2026.",
+  "notes": "This is a test period for November 2026.",
   "totalIncome": 0,
   "totalExpenses": 0
 }
@@ -26,13 +26,13 @@ PUT http://localhost:3000/periods/6ac07c03b3bfe0522060d74e
 Content-Type: application/json
 
 {
-  "month": 10,
+  "month": 11,
   "year": 2026,
-  "label": "October 2026",
-  "startDate": "2026-10-01",
-  "endDate": "2026-10-31",
+  "label": "November 2026",
+  "startDate": "2026-11-01",
+  "endDate": "2026-11-30",
   "isClosed": true,
-  "notes": "This is a test period for October 2026.",
+  "notes": "This is a test period for November 2026.",
   "totalIncome": 5000,
   "totalExpenses": 0
 }
